@@ -1,4 +1,4 @@
-#Consumer Credit XGBoost Demo
+# Consumer Credit XGBoost Demo
 
 Here is a demo model which utilizes XGBoost to determine an individual's 
 creditworthiness. It is a "challenger" model to 
