@@ -33,6 +33,7 @@ def begin():
 #modelop.score
 def score(datum):
     datum = pd.DataFrame(datum, index=[0])
+    datum['rent_indicator'] = datum.home_ownership.isin(['RENT']).astype(int)
     datum['probability'] = prediction(datum)
     datum['prediction'] = datum.probability \
                           .apply(lambda x: x > threshold).astype(int)
@@ -45,6 +46,7 @@ def prediction(data):
 #modelop.metrics
 def metrics(data):
     metrics = {}
+    data.loc[:, 'rent_indicator'] = data.home_ownership.isin(['RENT']).astype(int)
     data.loc[:, 'probabilities'] = prediction(data)
     data.loc[:, 'predictions'] = data.probabilities \
                                      .apply(lambda x: threshold > x) \
@@ -117,7 +119,7 @@ def get_drift_metrics(data):
 
     int_rate_pvalue = ttest_1samp(a=data.int_rate,
                                         popmean=int_rate_mean)[1]
-    pred_log_probs = lr_model.predict_log_proba(X=data.loc[:, features])[:, 1]
+    pred_log_probs = model.predict_log_proba(X=data.loc[:, features])[:, 1]
     neg_log_probs = -1*pred_log_probs
     output_logprob_pvalue = kstest(neg_log_probs,
                                    'gamma',
