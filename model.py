@@ -61,12 +61,12 @@ def metrics(data):
         rc = [{'fpr': x[0], 'tpr': x[1]} for x in list(zip(fpr, tpr))]
         metrics['f1_score'] = f1
         metrics['confusion_matrix'] = cm
-        metrics['roc_auc'] = auc_val
-        metrics['roc_curve'] = rc
-        metrics['bias_metrics'] = get_bias_metrics(data)
+        metrics['auc'] = auc_val
+        metrics['ROC'] = rc
+        metrics['bias'] = get_bias_metrics(data)
 
     metrics['drift_metrics'] = get_drift_metrics(data)
-    metrics['shap_values'] = get_shap_values(data)
+    metrics['shap'] = get_shap_values(data)
     yield metrics
 
 
@@ -119,7 +119,7 @@ def get_drift_metrics(data):
 
     int_rate_pvalue = ttest_1samp(a=data.int_rate,
                                         popmean=int_rate_mean)[1]
-    pred_log_probs = model.predict_log_proba(X=data.loc[:, features])[:, 1]
+    pred_log_probs = np.log(model.predict_proba(X=data.loc[:, features])[:, 1])
     neg_log_probs = -1*pred_log_probs
     output_logprob_pvalue = kstest(neg_log_probs,
                                    'gamma',
