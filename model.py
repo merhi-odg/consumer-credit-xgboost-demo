@@ -119,7 +119,7 @@ def get_drift_metrics(data):
 
     int_rate_pvalue = ttest_1samp(a=data.int_rate,
                                         popmean=int_rate_mean)[1]
-    pred_log_probs = np.log(model.predict_proba(X=data.loc[:, features])[:, 1])
+    pred_log_probs = np.log(model.predict_proba(data=data.loc[:, features])[:, 1])
     neg_log_probs = -1*pred_log_probs
     output_logprob_pvalue = kstest(neg_log_probs,
                                    'gamma',
