@@ -1,0 +1,16 @@
+{
+  "type":"record",
+  "name":"cc_input",
+  "fields": [
+    {"name":"id", "type":"int"},
+    {"name":"loan_amnt", "type":"float"},
+    {"name":"home_ownership", "type":"string"},
+    {"name":"annual_inc", "type":"float"},
+    {"name":"dti", "type":"float"},
+    {"name":"int_rate", "type":"float"},
+    {"name":"tax_liens", "type":"float"},
+    {"name":"loan_status", "type":"int"},
+    {"name":"forty_plus_indicator", "type":"string"},
+    {"name":"credit_age", "type":"int"}
+    ]
+}
