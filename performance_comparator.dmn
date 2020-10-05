@@ -10,7 +10,7 @@
           <text></text>
         </inputExpression>
       </input>
-      <input id="InputClause_08e7ybd" label="f1_score" camunda:inputVariable="f2_score">
+      <input id="InputClause_08e7ybd" label="f1_score" camunda:inputVariable="f1_score">
         <inputExpression id="LiteralExpression_0nr86e9" typeRef="double" expressionLanguage="feel">
           <text></text>
         </inputExpression>
@@ -36,13 +36,13 @@
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1u0j72q">
-          <text>&lt;= 0.20</text>
+          <text>&lt;= 0.10</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1id0elh">
           <text>false</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qpb76t">
-          <text>"F2 under threshold of 0.60"</text>
+          <text>"F1 under threshold of 0.10"</text>
         </outputEntry>
       </rule>
     </decisionTable>
