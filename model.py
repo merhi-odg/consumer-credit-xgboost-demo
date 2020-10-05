@@ -1,3 +1,6 @@
+# modelop.schema.0: input_schema
+# modelop.schema.1: output_schema
+
 import pandas as pd
 import numpy as np
 from scipy.special import logit
