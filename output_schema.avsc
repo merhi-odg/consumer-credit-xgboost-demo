@@ -1,9 +1,21 @@
 {
-  "type":"record",
-  "name":"cc_output",
-  "fields": [
-    {"name":"id", "type":"int"},
-    {"name":"probability", "type":"float"},
-    {"name":"prediction", "type":"int"}
-    ]
+    "type": "array",
+    "items": {
+        "type": "record",
+        "name": "cc_output",
+        "fields": [
+            {
+                "name": "id",
+                "type": "int"
+            },
+            {
+                "name": "probability",
+                "type": "double"
+            },
+            {
+                "name": "prediction",
+                "type": "int"
+            }
+        ]
+    }
 }
